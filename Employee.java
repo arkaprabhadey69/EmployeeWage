@@ -3,18 +3,20 @@ public class Employee{
 	static final int EMP_RATE_HR=20;
 	static final int IS_PART_TIME=1;
 	static final int NUM_WORKING_DAYS=20;
+	static final int NUM_WORKING_HRS=100;
 
 	
 public static void main(String[] args) {
 	
 	System.out.println("Welcome to EmployeeWage");
-
-	int employeewage=0;
 	int employeehrs=0;
+	int totalworkdays=0;
+	int totalemphrs=0;
 	int totalwage=0;
-	for(int day=0;day<NUM_WORKING_DAYS;day++)
+	
+	while(totalemphrs<=NUM_WORKING_HRS&&totalworkdays<NUM_WORKING_DAYS)
 {
-
+	totalworkdays++;
 	int empcheck=(int) Math.floor(Math.random()*10)%3;
 
 	switch(empcheck)
@@ -30,12 +32,13 @@ public static void main(String[] args) {
 	}
 
 
-	employeewage=EMP_RATE_HR*employeehrs;
-	totalwage=totalwage+employeewage;
-	System.out.println("Emp wage for day "+day+" is: "+employeewage);
+	
+	totalemphrs+=employeehrs;
+	System.out.println("Emp hrs for day "+totalworkdays+" is: "+totalemphrs);
 
 
 }
+	totalwage=totalemphrs*EMP_RATE_HR;
 
 	System.out.println("Total emp wage is: "+totalwage);
 }
