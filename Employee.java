@@ -6,24 +6,25 @@ public class Employee{
 	
 public static void main(String[] args) {
 	
-	
 	System.out.println("Welcome to EmployeeWage");
 
 	int employeewage=0;
 	int employeehrs=0;
 
-	double empcheck= Math.floor(Math.random()*10)%3;
+	int empcheck=(int) Math.floor(Math.random()*10)%3;
 
-	if(empcheck==IS_FULL_TIME)
+	switch(empcheck)
 	{
-		employeehrs=8;
-	}
-	else if(empcheck==IS_PART_TIME)
-	{
+		case 1:
 		employeehrs=4;
-	}
-	else
+		break;
+		case 2:
+		employeehrs=8;
+		break;
+		default:
 		employeehrs=0;
+	}
+
 	employeewage=EMP_RATE_HR*employeehrs;
 
 	System.out.println("Emp wage is: "+employeewage);
