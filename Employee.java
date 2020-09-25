@@ -89,6 +89,7 @@ public static class EmpBuilder implements IComputeEmpWage
 	
 	totalemphrs+=employeehrs;
 	System.out.println("Emp hrs for day "+totalworkdays+" is: "+employeehrs);
+	System.out.println("Daily wage for employee is: "+ employeehrs*c.emprate);
 
 
 }
