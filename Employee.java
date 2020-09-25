@@ -6,6 +6,7 @@ public class Employee{
 
 		public void addEmployeeWage(String company,int emprate,int wrkingdays, int wrkinghrs);
 		public void computeCompanyWage();
+		public int gettotalwage(String company);
 	}
 
 
