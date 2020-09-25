@@ -40,17 +40,20 @@ public static class EmpBuilder implements IComputeEmpWage
 	static final int IS_FULL_TIME=2;
 	static final int IS_PART_TIME=1;
 	public ArrayList<CompWage> compempwagelist;
+	public HashMap<String,CompWage> compwagemap;
 	private int n=0;
 
 	public EmpBuilder()
 	{
 		compempwagelist= new ArrayList();
+		compwagemap=new HashMap();
 
 	}
 	public void addEmployeeWage(String company,int emprate,int wrkingdays, int wrkinghrs)
 	{
-		CompWage c =new CompWage(company,emprate,wrkingdays,wrkinghrs);
+		CompWage c = new CompWage(company,emprate,wrkingdays,wrkinghrs);
 		compempwagelist.add(c);
+		compwagemap.put(company,c);
 	}
 	public void computeCompanyWage()
 	{
@@ -97,6 +100,10 @@ public static class EmpBuilder implements IComputeEmpWage
 
 
 }
+public int gettotalwage(String company)
+{
+	return compwagemap.get(company).totalwage;
+}
 
 
 }
@@ -105,11 +112,12 @@ public static class EmpBuilder implements IComputeEmpWage
 	
 public static void main(String[] args) {
 	
-	
-	IComputeEmpWage e= new EmpBuilder();
+	System.out.println("Welcome to EmployeeWage");
+	EmpBuilder e= new EmpBuilder();
 	e.addEmployeeWage("Xolo",30,7,100);
 	e.addEmployeeWage("Xiaomi",60,9,120);
 	e.computeCompanyWage();
+	System.out.println("Total wage for company Xiaomi is "+e.gettotalwage("Xiaomi"));
 
 }
 
