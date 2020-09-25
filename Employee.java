@@ -1,4 +1,13 @@
+import java.util.*;
+
 public class Employee{
+
+	public interface IComputeEmpWage{
+
+		public void addEmployeeWage(String company,int emprate,int wrkingdays, int wrkinghrs);
+		public void computeCompanyWage();
+	}
+
 
 	public static class CompWage{
 	
@@ -26,29 +35,30 @@ public class Employee{
 }
 }
 
-public static class EmpBuilder 
+public static class EmpBuilder implements IComputeEmpWage
 {
 	static final int IS_FULL_TIME=2;
 	static final int IS_PART_TIME=1;
-	public CompWage[] compwagearray;
+	public ArrayList<CompWage> compempwagelist;
 	private int n=0;
 
 	public EmpBuilder()
 	{
-		compwagearray= new CompWage[5];
+		compempwagelist= new ArrayList();
 
 	}
 	public void addEmployeeWage(String company,int emprate,int wrkingdays, int wrkinghrs)
 	{
-		compwagearray[n]=new CompWage(company,emprate,wrkingdays,wrkinghrs);
-		n++;
+		CompWage c =new CompWage(company,emprate,wrkingdays,wrkinghrs);
+		compempwagelist.add(c);
 	}
 	public void computeCompanyWage()
 	{
-		for(int i=0;i<n;i++)
+		for(int i=0;i<compempwagelist.size();i++)
 		{
-			compwagearray[i].setTotalWage(ComputeWage(compwagearray[i]));
-			System.out.println(compwagearray[i]);
+			CompWage c1=compempwagelist.get(i);
+			c1.setTotalWage(this.ComputeWage(c1));
+			System.out.println(c1.totalwage);
 		}
 	}
 	public int ComputeWage(CompWage c)
@@ -95,7 +105,7 @@ public static class EmpBuilder
 public static void main(String[] args) {
 	
 	
-	EmpBuilder e= new EmpBuilder();
+	IComputeEmpWage e= new EmpBuilder();
 	e.addEmployeeWage("Xolo",30,7,100);
 	e.addEmployeeWage("Xiaomi",60,9,120);
 	e.computeCompanyWage();
