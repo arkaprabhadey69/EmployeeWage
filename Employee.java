@@ -6,15 +6,15 @@ public class Employee{
 	static final int NUM_WORKING_HRS=100;
 
 	
-public static void main(String[] args) {
-	
-	System.out.println("Welcome to EmployeeWage");
-	int employeehrs=0;
+
+public static int ComputeWage(String company,int emprate1, int totalworkdays1, int totalemphrs1)
+{
+	 int employeehrs=0;
 	int totalworkdays=0;
 	int totalemphrs=0;
 	int totalwage=0;
 	
-	while(totalemphrs<=NUM_WORKING_HRS&&totalworkdays<NUM_WORKING_DAYS)
+	while(totalemphrs<=totalemphrs1&&totalworkdays<totalworkdays1)
 {
 	totalworkdays++;
 	int empcheck=(int) Math.floor(Math.random()*10)%3;
@@ -34,13 +34,22 @@ public static void main(String[] args) {
 
 	
 	totalemphrs+=employeehrs;
-	System.out.println("Emp hrs for day "+totalworkdays+" is: "+totalemphrs);
+	System.out.println("Emp hrs for day "+totalworkdays+" is: "+employeehrs);
 
 
 }
-	totalwage=totalemphrs*EMP_RATE_HR;
+	totalwage=totalemphrs*emprate1;
+	return totalwage;
 
-	System.out.println("Total emp wage is: "+totalwage);
+
+}
+
+	
+public static void main(String[] args) {
+	
+	
+	
+	System.out.println(ComputeWage("Redmi",25,5,100));
 }
 
 }
